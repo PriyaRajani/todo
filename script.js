@@ -16,6 +16,10 @@ let count = 0;
     let edId = `edit-${num}`;
     todo = document.getElementById(pId).textContent;
     let newTodo =  prompt('enter new todo',todo)
+    if(newTodo === null){
+      alert('you clicked cancel')
+      return;
+    }
     if(newTodo === ''){
       alert('your todo was empty enter again to edit !')
       return;
