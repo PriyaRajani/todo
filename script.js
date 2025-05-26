@@ -38,6 +38,12 @@ let repeat = false;
     if(newTodo !== todo && !repeat){
             let para = document.getElementById(pId);
             para.textContent = newTodo;   
+            todoArr.every(t=>{
+               if(t.name === todo){
+                  t.name = newTodo;
+                  // console.log(todoArr)
+               }
+            })
             
     }
  }
