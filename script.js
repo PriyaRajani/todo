@@ -1,14 +1,16 @@
 const input = document.getElementById('add-input');
 const addBtn = document.getElementById('add-btn');
 const todoCards = document.querySelector('.todo-cards');
-
+let todoArr = [];
 let count = 0;
+let repeat = false;
  function deleteTodo(id){
     let num = id[4];
     let contId = 'container-'+num;
     let ele = document.getElementById(contId)
     todoCards.removeChild(ele)
-    
+    let arrIdx = Number(num);
+    todoArr = todoArr.filter(t=>t.id !== arrIdx)
  }
  function editTodo(id,todo){
     let num = id[5];
@@ -24,7 +26,16 @@ let count = 0;
       alert('your todo was empty enter again to edit !')
       return;
     }
-    if(newTodo !== todo){
+    if(todoArr.length > 0){
+               todoArr.every(t=>{
+                  if(t.name === newTodo){
+                     alert('the given todo already exists');
+                     repeat = true;
+                     return;
+                  }
+               })
+            }
+    if(newTodo !== todo && !repeat){
             let para = document.getElementById(pId);
             para.textContent = newTodo;   
             
@@ -37,6 +48,16 @@ let count = 0;
          }else{
             count++;
             todoCards.classList.remove("hidden");
+            if(todoArr.length > 0){
+               todoArr.every(t=>{
+                  if(t.name === todo){
+                     alert('the given todo already exists');
+                     repeat = true;
+                     return;
+                  }
+               })
+            }
+            if(!repeat){
             todoCards.innerHTML += 
             `
             <div class ='container' id='container-${count}'>
@@ -49,7 +70,9 @@ let count = 0;
             <div>
             </div>
             `
-        
+            
+            todoArr.push({id:count,name:todo})
+            }
          
          }
     }) 
