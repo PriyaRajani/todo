@@ -8,12 +8,29 @@
 </head>
 <body>
     <h1 id="todo-heading">Todo App</h1>
-    <div class="todo-input">
+    <!-- <div class="todo-input">
         <input type="text" placeholder="Whats in your mind today? add your todos ..."id='add-input'/>
         <button type="button"id='add-btn'>Add</button>
-    </div>
+    </div> -->
+    <form class="todo-input" id="todo-form">
+        <input 
+            type="text" 
+            placeholder=" Whats your Day Plan? add your todos ..."
+            id='add-input' required/>
+        
+        <input
+            type="time"
+            id="deadline"
+            name="deadline"
+            min="10:00"
+            max="19:00"
+            
+            required />
+       <button type="submit"id='add-btn'>Add Todo</button>
+    </form>
     <div class="todo-cards hidden" id="'todo-cards" >
     </div>
-    <script src="./script.js"></script>
+   
+     <script src="./script.js"></script> 
 </body>
 </html>
