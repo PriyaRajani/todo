@@ -1,6 +1,8 @@
 const input = document.getElementById('add-input');
 const addBtn = document.getElementById('add-btn');
+const deadline = document.getElementById('deadline')
 const todoCards = document.querySelector('.todo-cards');
+let form = document.getElementById('todo-form')
 let todoArr = [];
 let count = 0;
 let repeat = false;
@@ -47,19 +49,17 @@ let repeat = false;
             
     }
  }
- addBtn.addEventListener("click",()=>{
-         let todo = input.value;
-         if(todo === ''){
-            alert("plz enter your todo first")
-         }else{
-            count++;
-            todoCards.classList.remove("hidden");
+ function addTodo(){
+    let todo = input.value;
+    let time = deadline.value;
+    count++;
+    todoCards.classList.remove("hidden");
             if(todoArr.length > 0){
                todoArr.every(t=>{
                   if(t.name === todo){
                      alert('the given todo already exists');
                      repeat = true;
-                     return;
+                  
                   }
                })
             }
@@ -69,7 +69,10 @@ let repeat = false;
             <div class ='container' id='container-${count}'>
             <div class='card'>
                  <p id='todo-${count}'>${todo}</p> 
-               
+             
+            </div>
+            <div class = 'card'>
+                      <p id = 'deadline-${count}'>${time}</p>
             </div>
               <button type='button' class='delete-btn btns'id='del-${count}'onclick=deleteTodo('del-${count}')>⛔</button>
               <button type ='button'  class='edit-btn btns'id='edit-${count}'onclick =editTodo('edit-${count}','${todo}')>✏️</button>
@@ -79,9 +82,11 @@ let repeat = false;
             
             todoArr.push({id:count,name:todo})
             }
-         
-         }
-    }) 
+ }
+ form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    addTodo()
+ })
     
    
    
