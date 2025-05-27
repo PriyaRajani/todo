@@ -14,10 +14,15 @@
     align-items: center;
     justify-content: center;
 }
-.todo-input input{
+#add-input{
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
+}
+#deadline{
+    width: 10%;
+    padding: 6px 10px;
+    margin : 8px 
 }
 #add-btn{
   padding: 12px;
@@ -38,13 +43,13 @@
    
 }
 .card{
-    border: 1px solid rgb(80, 74, 191);
-    background-color: rgb(213, 166, 236);
+    /* border: 1px solid rgb(80, 74, 191);
+    background-color: rgb(213, 166, 236); */
     padding: 10px;
     margin: 15px;
     left:300px;
     width: 50%;
-    height:50px;
+    height:25px;
     text-align: center;
     border-radius: 5px;
     text-wrap: wrap;
@@ -58,11 +63,18 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    background-color:rgb(224, 199, 229);
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: auto;
+    margin: 10px;
+    width: 70%;
 }
+
 .btns{
   padding: 12px;
-  width: 100px;
-  margin: 2px;
-  background-color:aqua;
-  border-radius: 3px;
+  width: 50px;
+  margin: 8px;
+ 
+ 
 }
