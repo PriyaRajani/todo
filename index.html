@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
-    <link href="./style.css"rel="stylesheet"/>
-</head>
-<body>
-    <h1 id="todo-heading">Todo App</h1>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- <h1 id="todo-heading">Todo App</h1> -->
     <!-- <div class="todo-input">
         <input type="text" placeholder="Whats in your mind today? add your todos ..."id='add-input'/>
         <button type="button"id='add-btn'>Add</button>
     </div> -->
+
     <form class="todo-input" id="todo-form">
-        <input 
-            type="text" 
-            placeholder=" Whats your Day Plan? add your todos ..."
-            id='add-input' required/>
-        
-        <input
+      <input
+        type="text"
+        placeholder=" Whats your Day Plan? add your todos ..."
+        id="add-input"
+        required
+      />
+
+      <!-- <input
             type="time"
             id="deadline"
             name="deadline"
             min="10:00"
             max="19:00"
             
-            required />
-       <button type="submit"id='add-btn'>Add Todo</button>
+            required /> -->
+      <button type="submit" id="add-btn">
+        <i class="fa-solid fa-caret-right"></i>
+      </button>
     </form>
-    <div class="todo-cards hidden" id="'todo-cards" >
+    <div class="todo-cards" id="'todo-cards">
+      <div class="todo" id="container-${count}">
+        <div class="left-container">
+         
+            <input type="checkbox" id="check-1"/>
+            <span class="demo"></span>
+        
+          <p id="todo-${count}">${todo}</p>
+        </div>
+
+        <div class="right-container">
+          <button type="button" class="delete-btn btns" id="del-${count}">
+             <i class="fa-solid fa-trash" style="color: grey;"></i>
+          </button>
+          <button type="button" class="edit-btn btns" id="edit-${count}">
+              <i class="fa-solid fa-pen-to-square" style="color: grey;"></i>
+          </button>
+        </div>
+      </div>
     </div>
-   
-     <script src="./script.js"></script> 
-</body>
+
+    <script src="./script.js"></script>
+  </body>
 </html>
