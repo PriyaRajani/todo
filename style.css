@@ -1,80 +1,131 @@
 *{
-    margin:0;
-}
-
-#todo-heading{
-    color: blueviolet;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+  body{
+    background-color: #f3f3f3;
+  }
+ 
+ .todo{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin:10px;
-}
-.todo-input{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#add-input{
-  width: 70%;
-  padding: 12px 20px;
-  margin: 8px 0;
-}
-#deadline{
-    width: 10%;
-    padding: 6px 10px;
-    margin : 8px 
-}
-#add-btn{
-  padding: 12px;
-  width: 100px;
-  margin: 10px;
-  background-color:rgb(201, 135, 220);
-  border-radius: 6px;
-}
-.hidden{
-    display: none;
-}
-.todo-cards{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content:space-evenly
-   
-}
-.card{
-    /* border: 1px solid rgb(80, 74, 191);
-    background-color: rgb(213, 166, 236); */
-    padding: 10px;
-    margin: 15px;
-    left:300px;
-    width: 50%;
-    height:25px;
-    text-align: center;
+    justify-content: space-between;
+    background-color:white;
     border-radius: 5px;
+    padding: 20px 20px;
+    margin: 8px 80px 5px 20px;
+    max-height: 300px;
     text-wrap: wrap;
     overflow-wrap:break-word;
-    
-}
-.card .p{
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.container{
+    /* overflow: scroll; */
+ }
+ .left-container{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    background-color:rgb(224, 199, 229);
-    border: 0.5px solid black;
-    border-radius: 5px;
-    padding: auto;
-    margin: 10px;
-    width: 70%;
+    gap:10px;
+   
+ }
+ 
+ /* input[type=checkbox] {  
+    zoom: 1.5;
+    accent-color:#000;
+    border-radius: 10px;
+    border: solid red;
+    
+ } */
+ 
+  input[type=checkbox]{
+     position: absolute;
+     opacity: 0;
+     height: 0;
+     width: 0;
+  }
+   .check-container{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 12px;
+    user-select: none;
+  }
+  .check-container input:checked ~ .demo {
+   background-color: #2196F3;
+   
+  }
+
+.demo:after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
-.btns{
-  padding: 12px;
-  width: 50px;
-  margin: 8px;
- 
- 
+/* Show the checkmark when checked */
+.check-container input:checked ~ .demo:after {
+  display: block;
 }
+ .demo{
+    display: block;
+    zoom: 1.5;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    height: 15px;
+    width: 15px;
+ }
+ input[type=checkbox] :checked + .demo {
+  background-color: #2196F3;;
+ }
+ .left-container p {
+    font-weight:500;
+    position: relative;
+    
+ }
+ .right-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+ }
+ .right-container button{
+    background-color: #f3f3f3;
+    border:lightgray;
+    zoom: 1.5;
+ }
+ #add-input{ 
+  border-top-left-radius:20px;
+  border-bottom-left-radius:20px;
+  color:white;
+  border:none;
+  background-color: black;
+  margin-right: 0%;
+   width: 60%;
+ }
+ #add-btn{
+   
+  border-top-right-radius:20px;
+  border-bottom-right-radius:20px;
+  color: white;
+  border: none;
+  background-color: black;
+  margin-left: 0%;
+   width: 10%;
+ }
+ .todo-form{
+   display: flex;
+   justify-content: flex-start;
+   height: 40px;
+    width: 60%;
+ }
+ .form-container {
+  display: flex;
+  justify-content: center;
+  /* align-items:self-end; */
+   position:absolute;
+    left:0;
+    right:0;
+    bottom:20px;
+    
+}
+input::placeholder {
+  color: #ffffff; 
+  opacity: 1;
+ }
+
+ 
