@@ -39,12 +39,14 @@ input[type="checkbox"] {
   width: 0;
 }
 .check-container {
-  display: block;
+  display: flex;
+  justify-content: space-evenly;
   position: relative;
   padding-left: 35px;
   cursor: pointer;
   font-size: 12px;
   user-select: none;
+  gap: 20px;
 }
 .check-container input:checked ~ .demo {
   background-color: #2196f3;
@@ -66,13 +68,29 @@ input[type="checkbox"] {
   border: 1px solid lightgray;
   height: 15px;
   width: 15px;
+  min-width: 15px;
+  
 }
 input[type="checkbox"] :checked + .demo {
   background-color: #2196f3;
 }
+ .demo:after {
+  left: 28px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid rgb(242, 237, 237);
+  border-width: 0 2px 2px 0;
+
+  transform: rotate(45deg);
+}
+.check-container:hover input ~ .demo {
+  background-color: #ccc;
+}
 .left-container p {
   font-weight: 500;
   position: relative;
+  /* max-width: 250px; */
 }
 .right-container {
   display: flex;
@@ -92,6 +110,11 @@ input[type="checkbox"] :checked + .demo {
   background-color: black;
   margin-right: 0%;
   width: 60%;
+  padding: 12px 20px;
+}
+input:focus {
+  border: none;
+  outline: none;
 }
 #add-btn {
   border-top-right-radius: 20px;
@@ -101,6 +124,7 @@ input[type="checkbox"] :checked + .demo {
   background-color: black;
   margin-left: 0%;
   width: 10%;
+   height: 40px;
 }
 .todo-form {
   display: flex;
@@ -121,4 +145,6 @@ input[type="checkbox"] :checked + .demo {
 input::placeholder {
   color: #ffffff;
   opacity: 1;
+  
+  
 }
