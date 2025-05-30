@@ -12,45 +12,17 @@
   </head>
   <body>
     <div class="todo-cards" id="'todo-cards">
-      <div class="todo" id="container-${count}">
-        <div class="left-container">
-          <label class="check-container" for="check-1">
-            <input type="checkbox" id="check-1" />
-            <span class="demo"></span>
-          </label>
-          <p id="todo-${count}">${todo}
-            lorem1000
-          </p>
-        </div>
-
-        <div class="right-container">
-          <button type="button" class="delete-btn btns" id="del-${count}">
-            <i class="fa-solid fa-trash" style="color: grey"></i>
-          </button>
-          <button type="button" class="edit-btn btns" id="edit-${count}">
-            <i class="fa-solid fa-pen-to-square" style="color: grey"></i>
-          </button>
-        </div>
-      </div>
+   
     </div>
     <div class="form-container">
       <form class="todo-form" id="todo-form">
         <input
           type="text"
-          placeholder="         Create new task"
+          placeholder="Create new task"
           id="add-input"
           required
         />
-
-        <!-- <input
-            type="time"
-            id="deadline"
-            name="deadline"
-            min="10:00"
-            max="19:00"
-            
-            required /> -->
-        <button type="submit" id="add-btn">
+        <button type="submit" id="add-btn" on>
           <i class="fa-solid fa-caret-right" style="font-size: 20px"></i>
         </button>
       </form>
