@@ -11,17 +11,15 @@
     <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="todo-cards" id="'todo-cards">
-   
-    </div>
+    <div class="todo-cards" id="'todo-cards"></div>
     <div class="form-container">
       <form class="todo-form" id="todo-form">
-        <input
-          type="text"
+        <textarea
           placeholder="Create new task"
           id="add-input"
           required
-        />
+          style="overflow: hidden; resize: none"
+        ></textarea>
         <button type="submit" id="add-btn" on>
           <i class="fa-solid fa-caret-right" style="font-size: 20px"></i>
         </button>
