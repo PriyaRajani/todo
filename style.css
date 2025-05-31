@@ -4,7 +4,7 @@
 body {
   background-color: #f3f3f3;
   min-height: 100vh;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
@@ -17,7 +17,7 @@ body {
   border-radius: 5px;
   padding: 20px 20px;
   margin: 8px 80px 5px 20px;
-  max-height: 3000px;
+  max-height: 30000px;
   text-wrap: wrap;
   overflow-wrap: break-word;
   /* overflow: scroll; */
@@ -73,12 +73,11 @@ input[type="checkbox"] {
   height: 15px;
   width: 15px;
   min-width: 15px;
-  
 }
 input[type="checkbox"] :checked + .demo {
   background-color: #2196f3;
 }
- .demo:after {
+.demo:after {
   left: 28px;
   top: 2px;
   width: 5px;
@@ -116,7 +115,7 @@ input[type="checkbox"] :checked + .demo {
   width: 60%;
   padding: 12px 20px;
 }
-input:focus {
+textarea:focus {
   border: none;
   outline: none;
 }
@@ -128,7 +127,7 @@ input:focus {
   background-color: black;
   margin-left: 0%;
   width: 10%;
-   height: 40px;
+  height: 40px;
 }
 .todo-form {
   display: flex;
@@ -139,14 +138,12 @@ input:focus {
 .form-container {
   display: flex;
   justify-content: center;
-  align-items:flex-end;
-  position:sticky;
+  align-items: flex-end;
+  position: sticky;
   margin-top: 20px;
-  bottom:10px; 
+  bottom: 10px;
 }
-input::placeholder {
+textarea::placeholder {
   color: #ffffff;
   opacity: 1;
-  
-  
 }
