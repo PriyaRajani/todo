@@ -1,87 +1,81 @@
-const input = document.getElementById('add-input');
-const addBtn = document.getElementById('add-btn');
+const input = document.getElementById("add-input");
+const addBtn = document.getElementById("add-btn");
 
-const todoCards = document.querySelector('.todo-cards');
-let form = document.getElementById('todo-form')
+const todoCards = document.querySelector(".todo-cards");
+let form = document.getElementById("todo-form");
 let todoArr = [];
 let count = 0;
 
- function deleteTodo(id){
-    let num = id.slice(4);
-    let contId = 'container-'+num;
-    let ele = document.getElementById(contId)
-    todoCards.removeChild(ele)
-    let arrIdx = Number(num);
-    todoArr = todoArr.filter(t=>t.id !== arrIdx)
- }
- function editTodo(id,todo,repeat){
-    todo = todo.trim();
-    let num = id.slice(5);
-    let pId = `todo-${num}`;
-    let edId = `edit-${num}`;
-   //  todo = document.getElementById(pId).textContent.trim();
-   //  console.log(todo);
-    let newTodo =  prompt('enter new todo',todo)
-    newTodo = newTodo.trim();
-    if(newTodo === null){
-      alert('you clicked cancel')
-      return;
+function deleteTodo(id) {
+  let num = id.slice(4);
+  let contId = "container-" + num;
+  let ele = document.getElementById(contId);
+  todoCards.removeChild(ele);
+  let arrIdx = Number(num);
+  todoArr = todoArr.filter((t) => t.id !== arrIdx);
+}
+function editTodo(id, todo, repeat) {
+  todo = todo.trim();
+  let num = id.slice(5);
+  let pId = `todo-${num}`;
+
+  //  todo = document.getElementById(pId).textContent.trim();
+  //  console.log(todo);
+  let newTodo = prompt("enter new todo", todo);
+  newTodo = newTodo.trim();
+  if (newTodo === null) {
+    alert("you clicked cancel");
+    return;
+  }
+  if (newTodo === "") {
+    alert("your todo was empty enter again to edit !");
+    return;
+  }
+  if (todoArr.length > 0) {
+    for (const t of todoArr) {
+      if (t.name === newTodo) {
+        alert("the given todo already exists");
+        repeat = true;
+        // console.log(repeat);
+        return;
+      }
     }
-    if(newTodo === ''){
-      alert('your todo was empty enter again to edit !')
-      return;
+  }
+  if (newTodo !== todo && !repeat) {
+    let para = document.getElementById(pId);
+    para.textContent = newTodo;
+
+    for (const t of todoArr) {
+      if (t.name === todo) {
+        t.name = newTodo;
+      }
     }
-    if(todoArr.length > 0){
-               for(const t of todoArr){
-                  if(t.name === newTodo){
-                     alert('the given todo already exists');
-                     repeat = true;
-                     // console.log(repeat);
-                     return ;
-                  }
-                 
-               }
-            }
-    if(newTodo !== todo && !repeat){
-            let para = document.getElementById(pId);
-            para.textContent = newTodo;   
-           
-            for(const t of todoArr){
-               if(t.name === todo){
-                  t.name = newTodo;
-                  
-               }
-            }
-            
+  }
+}
+function addTodo(repeat) {
+  //  let repeat = false;
+  let todo = input.value.trim();
+
+  count++;
+  todoCards.classList.remove("hidden");
+  if (todoArr.length > 0) {
+    for (const t of todoArr) {
+      if (t.name === todo) {
+        alert("the given todo already exists");
+        repeat = true;
+        // console.log(repeat);
+        return;
+      }
     }
- }
- function addTodo(repeat){
-   //  let repeat = false;
-    let todo = input.value.trim();
-    
-    count++;
-    todoCards.classList.remove("hidden");
-            if(todoArr.length > 0){
-               for(const t of todoArr){
-                  if(t.name === todo){
-                     alert('the given todo already exists');
-                     repeat = true;
-                     // console.log(repeat);
-                     return ;
-                  }
-                 
-               }
-              
-            }
-            if(!repeat){
-            todoCards.innerHTML += 
-            `
+  }
+  if (!repeat) {
+    todoCards.innerHTML += `
        <div class="todo" id="container-${count}">
         <div class="left-container">
           <label class="check-container" for="check-${count}">
             <input type="checkbox" id="check-${count}" />
             <span class="demo"></span>
-            <p id="todo-${count}">${todo}</p>
+            <p id="todo-${count}" title="${todo}">${todo}</p>
           </label>
         </div>
 
@@ -93,18 +87,13 @@ let count = 0;
             <i class="fa-solid fa-pen-to-square" style="color: grey"></i>
           </button>
         </div>
-      </div>
-            `
-            
-            todoArr.push({id:count,name:todo})
-            // console.log(todoArr)
-            }
- }
- form.addEventListener("submit",(e)=>{
-    e.preventDefault();
-    addTodo(false)
- })
-    
-   
-   
-    
+      </div>`;
+
+    todoArr.push({ id: count, name: todo });
+    // console.log(todoArr)
+  }
+}
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addTodo(false);
+});
