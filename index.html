@@ -12,6 +12,7 @@
   </head>
   <body>
     <div class="todo-cards" id="'todo-cards"></div>
+
     <div class="form-container">
       <form class="todo-form" id="todo-form">
         <textarea
@@ -24,6 +25,26 @@
           <i class="fa-solid fa-caret-right" style="font-size: 20px"></i>
         </button>
       </form>
+    </div>
+
+    <div class="overlay" id="overlay">
+      <div class="modal">
+        <i
+          class="fa-solid fa-circle-xmark"
+          id="close-icon"
+          onclick="closeEditModal()"
+        ></i>
+        <form class="form" id="overlay-form">
+          <input
+            type="text"
+            placeholder="Enter New Todo"
+            class="form-input"
+            id="edit-input"
+            required
+          />
+          <button type="submit" class="btn-edit">Change Todo</button>
+        </form>
+      </div>
     </div>
     <script src="./script.js"></script>
   </body>

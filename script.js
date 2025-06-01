@@ -14,46 +14,8 @@ function deleteTodo(id) {
   let arrIdx = Number(num);
   todoArr = todoArr.filter((t) => t.id !== arrIdx);
 }
-function editTodo(id, todo, repeat) {
-  todo = todo.trim();
-  let num = id.slice(5);
-  let pId = `todo-${num}`;
 
-  //  todo = document.getElementById(pId).textContent.trim();
-  //  console.log(todo);
-  let newTodo = prompt("enter new todo", todo);
-  newTodo = newTodo.trim();
-  if (newTodo === null) {
-    alert("you clicked cancel");
-    return;
-  }
-  if (newTodo === "") {
-    alert("your todo was empty enter again to edit !");
-    return;
-  }
-  if (todoArr.length > 0) {
-    for (const t of todoArr) {
-      if (t.name === newTodo) {
-        alert("the given todo already exists");
-        repeat = true;
-        // console.log(repeat);
-        return;
-      }
-    }
-  }
-  if (newTodo !== todo && !repeat) {
-    let para = document.getElementById(pId);
-    para.textContent = newTodo;
-
-    for (const t of todoArr) {
-      if (t.name === todo) {
-        t.name = newTodo;
-      }
-    }
-  }
-}
 function addTodo(repeat) {
-  //  let repeat = false;
   let todo = input.value.trim();
 
   count++;
@@ -63,7 +25,6 @@ function addTodo(repeat) {
       if (t.name === todo) {
         alert("the given todo already exists");
         repeat = true;
-        // console.log(repeat);
         return;
       }
     }
@@ -83,7 +44,7 @@ function addTodo(repeat) {
           <button type="button" class="delete-btn btns" id="del-${count}"onclick=deleteTodo('del-${count}')>
             <i class="fa-solid fa-trash" style="color: grey"></i>
           </button>
-          <button type="button" class="edit-btn btns" id="edit-${count}"onclick =editTodo('edit-${count}','${todo}',false)>
+            <button type="button" class="edit-btn btns" id="edit-${count}"onclick =openEditModal(${count},false)>
             <i class="fa-solid fa-pen-to-square" style="color: grey"></i>
           </button>
         </div>
@@ -93,6 +54,42 @@ function addTodo(repeat) {
     // console.log(todoArr)
   }
 }
+
+function openEditModal(todoId) {
+  const overlayElement = document.getElementById("overlay");
+  overlayElement.style.display = "flex";
+  const form = document.getElementById("overlay-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let editInput = document.getElementById("edit-input");
+    let newTodo = editInput.value.trim();
+    let oldTodo = "";
+    for (const t of todoArr) {
+      if (t.id === todoId) {
+        oldTodo = t.name;
+      }
+    }
+  
+
+    if (newTodo !== oldTodo ) {
+      let para = document.getElementById(`todo-${todoId}`);
+      para.textContent = newTodo;
+
+      for (const t of todoArr) {
+        if (t.id === todoId) {
+          t.name = newTodo;
+        }
+      }
+    }
+    overlayElement.style.display = "none";
+  });
+}
+
+function closeEditModal() {
+  const overlayElement = document.getElementById("overlay");
+  overlayElement.style.display = "none";
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   addTodo(false);
