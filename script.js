@@ -13,6 +13,7 @@ function deleteTodo(id) {
   todoCards.removeChild(ele);
   let arrIdx = Number(num);
   todoArr = todoArr.filter((t) => t.id !== arrIdx);
+  showNotification("Success!");
 }
 
 function addTodo(repeat) {
@@ -23,7 +24,7 @@ function addTodo(repeat) {
   if (todoArr.length > 0) {
     for (const t of todoArr) {
       if (t.name === todo) {
-        alert("the given todo already exists");
+       showNotification("the given todo already exists");
         repeat = true;
         return;
       }
@@ -82,12 +83,24 @@ function openEditModal(todoId) {
       }
     }
     overlayElement.style.display = "none";
+    showNotification("Success!");
   });
 }
 
 function closeEditModal() {
   const overlayElement = document.getElementById("overlay");
   overlayElement.style.display = "none";
+}
+function showNotification(msg) {
+  const notifySpace = document.querySelector(".notifications");
+  setTimeout(() => {
+    notifySpace.innerHTML += ` <div class="notification">
+        <p>${msg}</p>
+      </div>`;
+  });
+  setTimeout(() => {
+    notifySpace.innerHTML = "";
+  }, 3000);
 }
 
 form.addEventListener("submit", (e) => {
