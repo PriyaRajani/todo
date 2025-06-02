@@ -24,7 +24,7 @@ function addTodo(repeat) {
   if (todoArr.length > 0) {
     for (const t of todoArr) {
       if (t.name === todo) {
-        alert("the given todo already exists");
+        showNotification("the given todo already exists");
         repeat = true;
         return;
       }
@@ -101,19 +101,9 @@ function showNotification(msg) {
   });
   setTimeout(() => {
     notifySpace.innerHTML = "";
+    notifySpace.style.display = "none";
   }, 3000);
-  notifySpace.style.display = "none";
-}
-function showNotification(msg) {
-  const notifySpace = document.querySelector(".notifications");
-  setTimeout(() => {
-    notifySpace.innerHTML += ` <div class="notification">
-        <p>${msg}</p>
-      </div>`;
-  });
-  setTimeout(() => {
-    notifySpace.innerHTML = "";
-  }, 3000);
+  // 
 }
 
 form.addEventListener("submit", (e) => {
