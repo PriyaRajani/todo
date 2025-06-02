@@ -13,6 +13,7 @@ function deleteTodo(id) {
   todoCards.removeChild(ele);
   let arrIdx = Number(num);
   todoArr = todoArr.filter((t) => t.id !== arrIdx);
+  showNotification("Success!");
 }
 
 function addTodo(repeat) {
@@ -23,7 +24,7 @@ function addTodo(repeat) {
   if (todoArr.length > 0) {
     for (const t of todoArr) {
       if (t.name === todo) {
-        alert("the given todo already exists");
+        showNotification("the given todo already exists");
         repeat = true;
         return;
       }
@@ -69,9 +70,8 @@ function openEditModal(todoId) {
         oldTodo = t.name;
       }
     }
-  
 
-    if (newTodo !== oldTodo ) {
+    if (newTodo !== oldTodo) {
       let para = document.getElementById(`todo-${todoId}`);
       para.textContent = newTodo;
 
@@ -81,6 +81,7 @@ function openEditModal(todoId) {
         }
       }
     }
+    showNotification("Success!");
     overlayElement.style.display = "none";
   });
 }
@@ -88,6 +89,19 @@ function openEditModal(todoId) {
 function closeEditModal() {
   const overlayElement = document.getElementById("overlay");
   overlayElement.style.display = "none";
+}
+function showNotification(msg) {
+  const notifySpace = document.querySelector(".notifications");
+  notifySpace.style.display = "block";
+  setTimeout(() => {
+    notifySpace.innerHTML += ` <div class="notification">
+        <p>${msg}</p>
+      </div>`;
+  });
+  setTimeout(() => {
+    notifySpace.innerHTML = "";
+  }, 3000);
+  notifySpace.style.display = "none";
 }
 
 form.addEventListener("submit", (e) => {
