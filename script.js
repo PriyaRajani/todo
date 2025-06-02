@@ -81,7 +81,7 @@ function openEditModal(todoId) {
         }
       }
     }
-    showNotification("Success!");
+   
     overlayElement.style.display = "none";
     showNotification("Success!");
   });
